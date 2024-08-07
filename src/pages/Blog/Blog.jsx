@@ -67,7 +67,7 @@ const Blog = () => {
                                         <p>Author: {post.author}</p>
                                         <p>Content: {post.content}</p>
                                         <p>Date: {post.createdDate}</p>
-                                        <Comment isComment={post.comments} postId={post._id} fetchData={retrieveBlogPost} />
+                                        <Comment isComment={post.comments} postId={post._id} fetchData={retrieveBlogPost} isAdmin={loggedUser?.isAdmin} />
                                         {token &&
                                             <AddComment fetchData={retrieveBlogPost} postId={post._id} />
                                         }
