@@ -62,6 +62,8 @@ export const updateBlogPost = async (payload) => {
 }
 
 export const addComment = async (payload) => { 
+    console.log(localStorage.getItem('token'));
+    
     try {
         const { data } = await axios.patch(`${API_URL}/blogs/addComment/${payload.id}`, {
             comment: payload.comment

@@ -20,7 +20,7 @@ const AddComment = ({ fetchData, postId }) => {
             comment: comment
         }
 
-        const response = await addComment(payload);
+        const response = await addComment(payload); 
         if (response) {
             fetchData();
             setComment('');
