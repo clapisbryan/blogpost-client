@@ -9,7 +9,7 @@ const GetComments = () => {
     const id = useParams();
 
     const [result, setResult] = useState([]);
-    const [isComment, setIsComment] = useState([]);
+    const [isComment, setIsComment] = useState([]);  
 
     useEffect(() => {
         retrieveBlogPost();

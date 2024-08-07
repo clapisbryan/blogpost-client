@@ -11,7 +11,7 @@ const DeletePost = ({ fetchData, postId }) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+   
     const handleDeletePost = async () => {
         const response = await deleteBlogPost(postId);
         console.log(response);

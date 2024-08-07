@@ -28,8 +28,8 @@ const UpdatePost = ({ fetchData, data }) => {
             id: data._id,
             title: title,
             content: content,
-            author: author
-        }
+            author: author 
+        } 
 
         const response = await updateBlogPost(payload);
         if (response) {
