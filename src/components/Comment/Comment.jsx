@@ -28,7 +28,7 @@ const Comment = ({ isComment, postId }) => {
 
                 </div>
             ))}
-            {!isActive &&
+            {!isActive && isComment?.length > 0 &&
                 <Nav.Link as={NavLink} to={`/getComments/${postId}`} exact="true" className='mb-3 text-end'>See All</Nav.Link>
             }
         </div>
