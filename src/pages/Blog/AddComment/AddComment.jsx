@@ -3,6 +3,7 @@ import { addComment } from '../../../services/blogApiService';
 import Swal from 'sweetalert2';
 
 const AddComment = ({ fetchData, postId }) => {
+    const token = localStorage.getItem('token');
     const [comment, setComment] = useState('');
 
     // Handle changes in the textarea
@@ -20,7 +21,7 @@ const AddComment = ({ fetchData, postId }) => {
             comment: comment
         }
 
-        const response = await addComment(payload); 
+        const response = await addComment(payload);
         if (response) {
             fetchData();
             setComment('');
@@ -36,24 +37,27 @@ const AddComment = ({ fetchData, postId }) => {
     };
 
     return (
-        <> <div>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <textarea
-                        id="comment"
-                        cols="30"
-                        rows="3"
-                        className="form-control"
-                        placeholder="Write your comment here..."
-                        value={comment}
-                        onChange={handleChange}
-                    />
+        <>
+            {token &&
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <textarea
+                                id="comment"
+                                cols="30"
+                                rows="3"
+                                className="form-control"
+                                placeholder="Write your comment here..."
+                                value={comment}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                            Send
+                        </button>
+                    </form>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    Send
-                </button>
-            </form>
-        </div>
+            }
         </>
     )
 }
