@@ -11,7 +11,7 @@ const DeletePost = ({ fetchData, postId }) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
+
     const handleDeletePost = async () => {
         const response = await deleteBlogPost(postId);
         console.log(response);
@@ -24,14 +24,16 @@ const DeletePost = ({ fetchData, postId }) => {
             });
             fetchData();
             setShow(false);
+        } else {
+            Swal.fire({
+                title: "Post",
+                icon: "error",
+                text: "Only admin can delete a post"
+            });
+            fetchData();
+            setShow(false);
         }
-        Swal.fire({
-            title: "Post",
-            icon: "error",
-            text: "Only admin can delete a post"
-        });
-        fetchData();
-        setShow(false);
+
 
     }
 

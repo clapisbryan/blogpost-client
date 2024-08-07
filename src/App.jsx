@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Blog from './pages/Blog/Blog';
 import Login from './pages/Login/Login';
@@ -8,6 +8,15 @@ import GetComments from './pages/Blog/GetComments/GetComments';
 
 const App = () => {
   const token = localStorage.getItem('token');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [token]);
 
   return (
     <>
@@ -16,7 +25,7 @@ const App = () => {
           <Route path="/" element={<Blog />} />
           <Route path="/posts" element={<Blog />} />
           <Route path="/getComments/:postId" element={<GetComments />} />
-          {!token &&
+          {!loggedIn &&
             <>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
