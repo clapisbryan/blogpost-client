@@ -25,6 +25,13 @@ const DeletePost = ({ fetchData, postId }) => {
             fetchData();
             setShow(false);
         }
+        Swal.fire({
+            title: "Post",
+            icon: "error",
+            text: "Only admin can delete a post"
+        });
+        fetchData();
+        setShow(false);
 
     }
 

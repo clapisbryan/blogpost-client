@@ -27,6 +27,7 @@ const Blog = () => {
         }
 
     }
+    
     return (
         <>
             <Container className='my-5'>

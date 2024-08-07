@@ -1,5 +1,8 @@
 {
-    "url": "https://blogpost-client-bice.vercel.app/",
+    "url": [
+        "https://blogpost-client-bice.vercel.app/", 
+        "https://blogpost-client-git-main-bryans-projects-7acc38e5.vercel.app/"
+    ],
     "endpoints": {
         "register": "/register",
         "login": "/login",

@@ -32,6 +32,8 @@ export const addBlogPost = async (payload) => {
 
 export const deleteBlogPost = async (postId) => {
     const token = localStorage.getItem('token');
+    console.log(token);
+    
     try {
         const { data } = await axios.delete(`${API_URL}/blogs/deletePost/${postId}`, {
             headers: {
