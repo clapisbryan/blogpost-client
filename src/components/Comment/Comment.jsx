@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
+import DeleteComment from './DeleteComment/DeleteComment';
 
-const Comment = ({ isComment, postId }) => {
+const Comment = ({ isComment, postId, fetchData }) => {
 
     const [isActive, setIsActive] = useState(false);
 
@@ -25,7 +26,7 @@ const Comment = ({ isComment, postId }) => {
                 <div key={comment._id}>
                     <p className='m-0'><strong>User ID:</strong> {comment.userId}</p>
                     <p className='m-0'><strong>Comment:</strong> {comment.comment}</p>
-
+                    <DeleteComment postId={postId} commentId={comment._id} fetchData={fetchData} />
                 </div>
             ))}
             {!isActive && isComment?.length > 0 &&

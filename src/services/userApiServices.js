@@ -26,7 +26,8 @@ export const login = async (payload) => {
         console.log(error);
     }
 }
-export const userDetails = async (token) => {
+export const userDetails = async () => {
+    const token = localStorage.getItem('token');
     try {
         const { data } = await axios.get(`${API_URL}/users/details`, {
             headers: {

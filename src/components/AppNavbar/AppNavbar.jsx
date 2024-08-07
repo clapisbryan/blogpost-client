@@ -24,7 +24,7 @@ const AppNavbar = ({ fetchData }) => {
 
 						<Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
 							<Nav className="">
-								<Button variant='primary' onClick={handleLogout}>Logout</Button>
+								<Button variant='primary' as={NavLink} to="/login" onClick={handleLogout}>Logout</Button>
 							</Nav>
 						</Navbar.Collapse> :
 						<Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>

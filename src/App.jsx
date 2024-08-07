@@ -25,15 +25,11 @@ const App = () => {
           <Route path="/" element={<Blog />} />
           <Route path="/posts" element={<Blog />} />
           <Route path="/getComments/:postId" element={<GetComments />} />
-          {!loggedIn &&
-            <>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </>
-          }
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </Router>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </Router >
     </>
   )
 }

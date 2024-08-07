@@ -7,19 +7,21 @@ import AddPost from './AddPost/AddPost';
 import DeletePost from './DeletePost/DeletePost';
 import UpdatePost from './UpdatePost/UpdatePost';
 import Comment from '../../components/Comment/Comment';
+import { userDetails } from '../../services/userApiServices';
 
 const Blog = () => {
     const token = localStorage.getItem('token');
 
     const [result, setResult] = useState([]);
+    const [loggedUser, setLoggedUser] = useState();
 
     useEffect(() => {
+        retrieveUserDetails();
         retrieveBlogPost();
     }, [])
 
     const retrieveBlogPost = async () => {
         const response = await getBlogPost();
-        console.log(response);
         if (response) {
             setResult(response.posts)
         } else {
@@ -27,7 +29,15 @@ const Blog = () => {
         }
 
     }
-    
+
+    const retrieveUserDetails = async () => {
+        const response = await userDetails();
+        if (response) {
+            setLoggedUser(response?.user)
+        }
+        return true;
+    }
+
     return (
         <>
             <Container className='my-5'>
@@ -47,7 +57,7 @@ const Blog = () => {
                             <Col sm={12} md={4} className='mb-3' key={post._id}>
                                 <Card className='h-100'>
                                     <CardBody className=''>
-                                        {token &&
+                                        {token && loggedUser?.isAdmin &&
                                             <div className="d-flex justify-content-end mb-3">
                                                 <UpdatePost fetchData={retrieveBlogPost} data={post} />
                                                 <DeletePost fetchData={retrieveBlogPost} postId={post._id} />
@@ -57,7 +67,7 @@ const Blog = () => {
                                         <p>Author: {post.author}</p>
                                         <p>Content: {post.content}</p>
                                         <p>Date: {post.createdDate}</p>
-                                        <Comment isComment={post.comments} postId={post._id} />
+                                        <Comment isComment={post.comments} postId={post._id} fetchData={retrieveBlogPost} />
                                         {token &&
                                             <AddComment fetchData={retrieveBlogPost} postId={post._id} />
                                         }

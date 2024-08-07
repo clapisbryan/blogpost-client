@@ -48,7 +48,7 @@ const UpdatePost = ({ fetchData, data }) => {
     return (
         <div>
             <Button variant="primary" size='sm' className='mx-1' onClick={handleShow}>
-                Update Post
+                Update
             </Button>
 
             <Modal show={show} onHide={handleClose} animation={true} centered>

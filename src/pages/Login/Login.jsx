@@ -22,9 +22,15 @@ const Login = () => {
     }
 
     const response = await login(payload);
-    console.log("response", response);
+    if (!response) {
+      Swal.fire({
+        title: "Login Failed",
+        icon: "error",
+        text: "Email and password do not match."
+      })
+    }
 
-    if (response.access !== undefined) {
+    if (response) {
       localStorage.setItem('token', response.access);
       setEmail('');
       setPassword('');
@@ -36,12 +42,12 @@ const Login = () => {
       });
       navigate('/')
 
-    } else if (response.message == "Incorrect email or password") {
+    } else if (response.message == "Email and password do not match") {
 
       Swal.fire({
         title: "Login Failed",
         icon: "error",
-        text: "Incorrect email or password."
+        text: "Email and password do not match."
       })
 
     } else {
@@ -51,8 +57,8 @@ const Login = () => {
         icon: "error",
         text: `${email} does not exist.`
       })
-
     }
+
   }
 
   useEffect(() => {

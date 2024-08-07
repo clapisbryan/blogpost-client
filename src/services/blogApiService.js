@@ -32,8 +32,7 @@ export const addBlogPost = async (payload) => {
 
 export const deleteBlogPost = async (postId) => {
     const token = localStorage.getItem('token');
-    console.log(token);
-    
+
     try {
         const { data } = await axios.delete(`${API_URL}/blogs/deletePost/${postId}`, {
             headers: {
@@ -88,4 +87,19 @@ export const getComments = async (postId) => {
     } catch (error) {
         console.log(error);
     }
-} 
+}
+
+export const deleteComment = async (postId, commentId) => {
+    const token = localStorage.getItem('token');
+
+    try {
+        const { data } = await axios.delete(`${API_URL}/blogs/deleteComment/${postId}/${commentId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}
