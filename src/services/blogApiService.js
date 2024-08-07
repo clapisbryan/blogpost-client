@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const token = localStorage.getItem('token');
 
-export const getBlogPost = async () => {
+export const getBlogPost = async () => { 
     try {
         const { data } = await axios.get(`${API_URL}/blogs/getPosts`);
         return data
@@ -14,7 +14,7 @@ export const getBlogPost = async () => {
 }
 
 export const addBlogPost = async (payload) => {
-    
+     
     try {
         const { data } = await axios.post(`${API_URL}/blogs/addPost`, {
             title: payload.title,
@@ -31,7 +31,7 @@ export const addBlogPost = async (payload) => {
     }
 }
 
-export const deleteBlogPost = async (postId) => {
+export const deleteBlogPost = async (postId) => {  
     try {
         const { data } = await axios.delete(`${API_URL}/blogs/deletePost/${postId}`, {
             headers: {
@@ -44,7 +44,7 @@ export const deleteBlogPost = async (postId) => {
     }
 }
 
-export const updateBlogPost = async (payload) => {
+export const updateBlogPost = async (payload) => { 
     try {
         const { data } = await axios.patch(`${API_URL}/blogs/updatePost/${payload.id}`, {
             title: payload.title,
@@ -61,7 +61,7 @@ export const updateBlogPost = async (payload) => {
     }
 }
 
-export const addComment = async (payload) => {
+export const addComment = async (payload) => { 
     try {
         const { data } = await axios.patch(`${API_URL}/blogs/addComment/${payload.id}`, {
             comment: payload.comment
@@ -76,11 +76,11 @@ export const addComment = async (payload) => {
     }
 }
 
-export const getComments = async (postId) => {
+export const getComments = async (postId) => { 
     try {
         const { data } = await axios.get(`${API_URL}/blogs/getComments/${postId}`);
         return data
     } catch (error) {
         console.log(error);
     }
-}
+} 
