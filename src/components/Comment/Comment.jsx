@@ -25,12 +25,12 @@ const Comment = ({ isComment, postId }) => {
                 <div key={comment._id}>
                     <p className='m-0'><strong>User ID:</strong> {comment.userId}</p>
                     <p className='m-0'><strong>Comment:</strong> {comment.comment}</p>
-                    
-                    {!isActive &&
-                        <Nav.Link as={NavLink} to={`/getComments/${postId}`} exact="true" className='mb-3 text-end'>See All</Nav.Link>
-                    }
+
                 </div>
             ))}
+            {!isActive &&
+                <Nav.Link as={NavLink} to={`/getComments/${postId}`} exact="true" className='mb-3 text-end'>See All</Nav.Link>
+            }
         </div>
     )
 }

@@ -14,6 +14,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Blog />} />
+          <Route path="/posts" element={<Blog />} />
           <Route path="/getComments/:postId" element={<GetComments />} />
           {!token &&
             <>

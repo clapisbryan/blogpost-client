@@ -21,7 +21,6 @@ const AddPost = ({ fetchData }) => {
     const handleShow = () => setShow(true);
 
     const handleAddPost = async (e) => {
-
         console.log(title, author, content);
 
         e.preventDefault();
@@ -32,20 +31,24 @@ const AddPost = ({ fetchData }) => {
             author: author
         }
 
-        const response = await addBlogPost(payload);
-        if (response) {
-            fetchData();
-            Swal.fire({
-                title: "Post",
-                icon: "success",
-                text: "Added post successfully"
-            });
-            setTitle('');
-            setAuthor('');
-            setContent('');
-            setShow(false);
-        }
+        try {
+            const response = await addBlogPost(payload);
+            if (response) {
+                fetchData();
+                Swal.fire({
+                    title: "Post",
+                    icon: "success",
+                    text: "Added post successfully"
+                });
+                setTitle('');
+                setAuthor('');
+                setContent('');
+                setShow(false);
+            }
+        } catch (err) {
+            console.log(err);
 
+        }
     };
 
     useEffect(() => {

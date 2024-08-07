@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('token');
 
 export const getBlogPost = async () => {
     try {
@@ -14,6 +14,7 @@ export const getBlogPost = async () => {
 }
 
 export const addBlogPost = async (payload) => {
+    
     try {
         const { data } = await axios.post(`${API_URL}/blogs/addPost`, {
             title: payload.title,
